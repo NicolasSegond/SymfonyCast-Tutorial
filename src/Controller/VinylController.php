@@ -12,4 +12,19 @@ class VinylController
     {
         return new Response('Title: PB and James');
     }
+
+    #[Route('/browse/{slug}', name: 'browse')]
+    public function browse($slug = null): Response
+    {
+        if($slug)
+        {
+            $title = 'Genre: '.str_replace('-', ' ', $slug);
+        } 
+        else
+        {
+            $title = 'All Genres';
+        }
+
+        return new Response($title);
+    }
 }
